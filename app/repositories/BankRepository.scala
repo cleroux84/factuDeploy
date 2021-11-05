@@ -18,6 +18,7 @@ class BankRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPro
 
   def getBank(user: User): Future[Option[Bank]] = {
     val query = slickBank.filter(_.userId === user.id )
+    println(query)
     db.run(query.result.headOption)
   }
 
